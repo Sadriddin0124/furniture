@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { IoSearch } from "react-icons/io5";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { DATA } from "../../lib/data";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CollectionHeader = () => {
   const { t } = useTranslation();
@@ -75,6 +75,12 @@ const CollectionHeader = () => {
     sessionStorage.setItem("search", value);
     navigate("/search");
   };
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <header className="w-[100%] px-[20px] sm:px-[40px] py-[100px] md:flex-row flex-col flex gap-[30px] xl:gap-[50px]">
       <aside className="w-[100%] md:w-[300px] flex flex-col gap-[40px]">
@@ -145,7 +151,7 @@ const CollectionHeader = () => {
         </div>
         <div className="w-[100%] grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[20px] xl:gap-[40px]">
           {sortedItems?.map((item, index) => (
-            <div key={index} className="flex flex-col gap-[20px] group">
+            <Link to={`/single_page/${item?.id}`} onClick={handleScrollToTop} key={index} className="cursor-pointer flex flex-col gap-[20px] group">
               <img
                 src={item?.img}
                 alt={item?.title}
@@ -154,7 +160,7 @@ const CollectionHeader = () => {
               <h5 className="group-hover:text-orange-300 group-hover:font-[600] ease-in-out duration-300 text-[18px]">
                 {item?.title}
               </h5>
-            </div>
+            </Link>
           ))}
         </div>
         <div
