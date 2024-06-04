@@ -10,7 +10,7 @@ const Autumn = () => {
   const subtitle = t("autumn.subtitle");
   const data = DATA(t).filter((item) => item?.category === "Autumn Collection");
   return (
-    <section className="">
+    <section>
       <Quality image={AutumnImg} bg=" bg-gray-700" />
       <Collection title={title} subtitle={subtitle} data={data} />
     </section>
