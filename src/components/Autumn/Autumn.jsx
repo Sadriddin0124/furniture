@@ -2,8 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Quality from "../Quality/Quality";
 import Collection from "../Collection/Collection";
-import AutumnImg from "../../assets/autumn.png";
 import { DATA } from "../../lib/data";
+import IMAGE from "../../assets/autumn.png"
 const Autumn = () => {
   const { t } = useTranslation();
   const title = t("autumn.title");
@@ -11,7 +11,7 @@ const Autumn = () => {
   const data = DATA(t).filter((item) => item?.category === "Autumn Collection");
   return (
     <section>
-      <Quality image={AutumnImg} bg=" bg-gray-700" />
+      <Quality image={IMAGE} bg="bg-gray-700" />
       <Collection title={title} subtitle={subtitle} data={data} />
     </section>
   );
