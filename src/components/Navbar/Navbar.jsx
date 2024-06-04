@@ -83,8 +83,8 @@ const Navbar = () => {
       </ul>
       <ul
         className={`${
-          langVisible ? "" : "top-[-110px]"
-        } z-[50] bg-slate-200 ease-in-out duration-500 flex flex-col gap-[12px] fixed top-0 right-[50px] sm:right-[100px] py-[5px] px-[10px] w-[160px] cursor-pointer`}
+          langVisible ? "" : "top-[-100px] md:top-[-110px]"
+        } z-[50] bg-slate-200 ease-in-out duration-500 flex flex-col gap-[12px] fixed top-0 right-[100px] py-[5px] px-[10px] md:w-[160px] cursor-pointer`}
       >
         {lang?.map((item, index) => {
           return (
@@ -98,7 +98,7 @@ const Navbar = () => {
                 src={item?.flag}
                 alt={item?.lang}
               />
-              <h6>{item?.lang}</h6>
+              <h6 className="md:block hidden">{item?.lang}</h6>
             </li>
           );
         })}
@@ -113,16 +113,16 @@ const Navbar = () => {
             src={language?.find((item) => item?.id === activeLang)?.flag}
             alt="flag"
           />
-          <h6>{language?.find((item) => item?.id === activeLang)?.lang}</h6>
+          <h6 className="md:block hidden">{language?.find((item) => item?.id === activeLang)?.lang}</h6>
           <IoIosArrowDown
-            className={`${langVisible ? "rotate-[180deg]" : ""} ml-[30px]`}
+            className={`${langVisible ? "rotate-[180deg]" : ""} md:ml-[30px]`}
           />
         </li>
       </ul>
       <aside
         className={`${
           sideBar ? "top-0 " : " top-[-120vh] opacity-0"
-        } ease-linear duration-500 w-[100%] h-[100vh] fixed bg-white z-[50] gap-[20vh] left-0 flex flex-col items-center justify-start py-[30px]`}
+        } ease-linear duration-500 w-[100%] h-[100vh] fixed bg-white z-[50] gap-[10vh] md:gap-[20vh] left-0 flex flex-col items-center justify-start py-[30px]`}
       >
         <button
           onClick={() => setSideBar(!sideBar)}
@@ -130,7 +130,7 @@ const Navbar = () => {
         >
           <VscChromeClose size={24} />
         </button>
-        <ul className="flex flex-col items-center gap-[50px]">
+        <ul className="flex flex-col items-center gap-[30px] md:gap-[50px]">
           {links?.map((item, index) => {
             return (
               <li
@@ -138,7 +138,7 @@ const Navbar = () => {
                 key={index}
                 className={`${
                   "/" + url === item?.path ? "text-black" : " text-zinc-400"
-                } hover:text-black duration-300 ease-in-out cursor-pointer text-[24px]`}
+                } hover:text-black duration-300 ease-in-out cursor-pointer text-[20px] md:text-[24px]`}
               >
                 <Link onClick={()=>setSideBar(!sideBar)} to={item?.path}>{item?.text}</Link>
               </li>

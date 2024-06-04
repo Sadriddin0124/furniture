@@ -11,7 +11,7 @@ const SingleHeader = () => {
   return (
     <header className="w-[100%] p-[20px] sm:p-[40px]">
       <div className="w-[100%] flex-col lg:flex-row flex items-center gap-[50px]">
-        <div className="max-w-[100%] lg:max-w-[60%] max-h-[100vw] rounded-[20px] overflow-hidden">
+        <div className="w-[100%] lg:w-[60%] max-h-[100vw] rounded-[20px] overflow-hidden">
           <img src={product?.img} alt={product?.title} className="w-[100%] h-[100%] ease-in-out duration-300 hover:scale-150"/>
         </div>
         <div className="w-[100%] lg:w-[40%] flex flex-col gap-[20px]">
@@ -20,8 +20,8 @@ const SingleHeader = () => {
                 {
                     tableData?.map((item,index)=> {
                         return <div key={index} className="flex border border-gray-400">
-                            <div className="p-[20px] w-[40%] border-r border-r-gray-400 flex items-center">{item?.key}</div>
-                            <div className="p-[20px] w-[60%] flex items-center">{item?.value}</div>
+                            <div className="p-[10px] sm:p-[20px] w-[40%] border-r text-[12px] md:text-[16px] border-r-gray-400 flex items-center">{item?.key}</div>
+                            <div className="p-[10px] sm:p-[20px] w-[60%] text-[12px] md:text-[16px] flex items-center">{item?.value}</div>
                         </div>
                     })
                 }

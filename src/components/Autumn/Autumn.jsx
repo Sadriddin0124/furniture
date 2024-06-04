@@ -8,7 +8,7 @@ const Autumn = () => {
   const { t } = useTranslation();
   const title = t("autumn.title");
   const subtitle = t("autumn.subtitle");
-  const data = DATA(t).filter((item) => item?.category === "Autumn Collection");
+  const data = DATA(t).filter((item) => item?.category === title);
   return (
     <section>
       <Quality image={IMAGE} bg="bg-gray-700" />

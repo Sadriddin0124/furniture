@@ -46,16 +46,16 @@ const Header = () => {
           loading="lazy"
           src={HeaderImg}
           alt="HeaderImg"
-          className="absolute z-10 left-0 sm:left-0 w-[70%] sm:w-[60%] top-0 "
+          className="absolute hidden sm:block z-10 left-0 sm:left-0 w-[70%] sm:w-[60%] top-0 "
         />
         <div data-aos="fade-up" className="flex flex-col gap-0">
-          <h1 className=" leading-5 text-[15px] sm:leading-none sm:text-[40px] lg:text-[60px] text-end font-[600] text-white">
+          <h1 className=" leading-5 text-[20px] sm:leading-none sm:text-[40px] lg:text-[60px] text-end font-[600] text-white">
             {title1}
           </h1>
-          <h1 className=" leading-9 text-[30px] sm:leading-none sm:text-[70px] lg:text-[100px] text-end font-[600] text-white">
+          <h1 className=" leading-9 text-[35px] sm:leading-none sm:text-[70px] lg:text-[100px] text-end font-[600] text-white">
             {title2}
           </h1>
-          <h1 className=" leading-10 text-[40px] sm:leading-none sm:text-[100px] lg:text-[140px] text-end font-[600] text-white">
+          <h1 className=" leading-10 text-[45px] sm:leading-none sm:text-[100px] lg:text-[140px] text-end font-[600] text-white">
             {title3}
           </h1>
         </div>
@@ -65,10 +65,10 @@ const Header = () => {
           {data?.map((item, index) => {
             return (
               <div data-aos="fade-left" key={index} className="flex items-center gap-[20px]">
-                <div className="text-[80px] text-orange-300">{item?.icon}</div>
+                <div className="text-[60px] md:text-[80px] text-orange-300">{item?.icon}</div>
                 <div className="flex flex-col">
-                  <h3 className="text-[18px] font-[700]">{item?.title}</h3>
-                  <p className="text-[18px] text-gray-400">{item?.subtitle}</p>
+                  <h3 className="text-[14px] md:text-[18px] font-[700]">{item?.title}</h3>
+                  <p className="text-[14px] md:text-[18px] text-gray-400">{item?.subtitle}</p>
                 </div>
               </div>
             );

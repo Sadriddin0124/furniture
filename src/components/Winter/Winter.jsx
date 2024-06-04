@@ -8,7 +8,7 @@ const Winter = () => {
     const {t} = useTranslation()
     const title = t("winter.title")
     const subtitle = t("winter.subtitle")
-    const data = DATA(t).filter(item=> item?.category === "Winter Collection")
+    const data = DATA(t).filter(item=> item?.category === title)
   return (
     <section>
       <Quality image={WinterImg} bg="bg-slate-600"/>

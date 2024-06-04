@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from "react-i18next";
 import Aos from "aos";
 import { DATA } from "../../lib/data";
+import { Link } from "react-router-dom";
 const SimilarProducts = () => {
   const { t } = useTranslation();
   let settings = {
@@ -60,10 +61,10 @@ const SimilarProducts = () => {
       <Slider {...settings}>
         {
           data?.filter(item=> item?.category === category)?.map((item,index)=> {
-            return <div key={index} className=" group h-[380px] pb-[70px] px-[10px]">
+            return <Link onClick={window.location.reload} to={`/single_page/${item?.id}`} key={index} className=" group h-[380px] pb-[70px] px-[10px]">
               <img src={item?.img} alt={item?.title} className="w-[100%] h-[100%] rounded-[20px] object-cover"/>
               <h4 className="text-[20px] group-hover:text-orange-300 duration-300 ease-in-out font-[500] group-hover:font-[700]">{item?.title}</h4>
-            </div>
+            </Link>
           })
         }
       </Slider>
