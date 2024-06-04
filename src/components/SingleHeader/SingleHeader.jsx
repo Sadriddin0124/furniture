@@ -21,7 +21,7 @@ const SingleHeader = () => {
           <img
             src={product?.img}
             alt={product?.title}
-            className={` left-[${position?.x}px] top-[${position?.y}px] w-[100%] h-[100%] absolute ease-in-out pointer-events-none duration-300 z-20 group-hover:scale-150`}
+            className={` left-[${position?.x}px] top-[${position?.y}px] object-cover w-[100%] h-[100%] absolute ease-in-out pointer-events-none duration-300 z-20 group-hover:scale-150`}
           />
         </div>
         <div className="w-[100%] lg:w-[40%] flex flex-col gap-[20px]">
