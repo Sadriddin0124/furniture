@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import Quality from "../Quality/Quality";
 import Collection from "../Collection/Collection";
 import { DATA } from "../../lib/data";
-import IMAGE from "../../assets/autumn.png"
+import IMAGE from "../../assets/fall.png"
 const Autumn = () => {
   const { t } = useTranslation();
   const title = t("autumn.title");
