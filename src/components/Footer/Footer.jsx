@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <footer className="w-[100%] px-[10px] md:px-[40px] py-[60px]">
       <div className="w-[100%] flex gap-[30px] flex-wrap sm:justify-between items-start">
-        <div data-aos="fade-right" className="flex flex-col gap-[30px]">
+        <div className="flex flex-col gap-[30px]">
           <div className="flex items-center gap-[10px]">
             <img
               src={Logo}
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
           <p className="max-w-[300px] text-gray-400 font-[300]">{desc}</p>
         </div>
-        <div data-aos="fade-right" className="flex flex-col gap-[5px]">
+        <div className="flex flex-col gap-[5px]">
           <h4 className="font-[500] text-[18px] mb-[30px]">{top1}</h4>
           {links?.map((item, index) => (
             <Link
@@ -59,7 +59,7 @@ const Footer = () => {
             </Link>
           ))}
         </div>
-        <div data-aos="fade-right" className="flex flex-col gap-[5px]">
+        <div className="flex flex-col gap-[5px]">
           <h4 className="font-[500] text-[18px] mb-[30px]">{top2}</h4>
           {contacts?.map((item, index) => (
             <p key={index} className="text-gray-500">
@@ -68,7 +68,6 @@ const Footer = () => {
           ))}
         </div>
         <div
-          data-aos="fade-right"
           className="flex flex-col gap-[40px] w-[400px]"
         >
           <h4 className="font-[500] text-[18px]">{top3}</h4>
