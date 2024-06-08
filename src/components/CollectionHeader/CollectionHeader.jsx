@@ -15,6 +15,7 @@ const CollectionHeader = () => {
     t("collection.collection3"),
   ];
   const data = DATA(t);
+  const data2 = DATA(t);
   const [pageStart, setPageStart] = useState(0);
   const [pageEnd, setPageEnd] = useState(12);
   useEffect(() => {
@@ -36,12 +37,6 @@ const CollectionHeader = () => {
     }
   }, []);
   const paginated = data.slice(pageStart, pageEnd);
-  const [disabled, setDisabled] = useState(true);
-  const descending = data?.sort((a, b) => a.id - b.id);
-  const ascending = data?.sort((a, b) => b.id - a.id);
-  const paginated1 = ascending.slice(pageStart, pageEnd);
-  const paginated2 = descending.slice(pageStart, pageEnd);
-  const [sortCollections, setSortCollections] = useState(0)
   const nextPage = () => {
     setPageStart((prev) => prev + 12);
     setPageEnd((prev) => prev + 12);
@@ -63,11 +58,13 @@ const CollectionHeader = () => {
   const items = activeCategory
   ? data?.filter((item) => item?.category === activeCategory)
   : paginated;
+  const items2 = activeCategory
+  ? data?.filter((item) => item?.category === activeCategory)
+  : paginated;
   const filterCategory = (item) => {
     sessionStorage.setItem("category", item);
     setActiveCategory(item);
   };
-  const sortedItems = sortCollections === 2 ? paginated2 : sortCollections === 1 ? paginated1 : items
   const navigate = useNavigate();
   const handleSearch = (e) => {
     e.preventDefault();
@@ -81,6 +78,15 @@ const CollectionHeader = () => {
       behavior: "smooth",
     });
   };
+  const [sortCollections, setSortCollections] = useState(0)
+  const [disabled, setDisabled] = useState(true);
+  const ascending2 = items2.sort((a, b) => a.id - b.id);
+  const ascending = activeCategory ? ascending2 : data
+  const descending2 = items.sort((a, b) => b.id - a.id);
+  const descending = activeCategory ? descending2 : data2.sort((a, b) => b.id - a.id);
+  const paginated1 = ascending.slice(pageStart, pageEnd);
+  const paginated2 = descending.slice(pageStart, pageEnd);
+  const sortedItems = sortCollections === 0 ? paginated1 : sortCollections === 1 ? paginated2 : items
   return (
     <header className="w-[100%] px-[20px] sm:px-[40px] py-[100px] md:flex-row flex-col flex gap-[30px] xl:gap-[50px]">
       <aside className="w-[100%] md:w-[300px] flex flex-col gap-[40px]">
