@@ -127,11 +127,11 @@ const CollectionHeader = () => {
                 : " overflow-visible h-[200px]"
             } transition-all flex flex-col gap-[10px] text-gray-500`}
           >
-            <li onClick={()=>filterCategory("")} className=" cursor-pointer">{t("collection.collection4")}</li>
+            <li onClick={()=>filterCategory("")} className={`${activeCategory === "" ? "text-black" : ""} transition-all hover:text-black cursor-pointer`}>{t("collection.collection4")}</li>
             {collections?.map((item, index) => (
               <li
                 key={index}
-                className=" cursor-pointer"
+                className={`${activeCategory === item ? "text-black" : ""} transition-all hover:text-black cursor-pointer`}
                 onClick={() => filterCategory(item)}
               >
                 {item}
