@@ -5,8 +5,10 @@ import { IoStarOutline } from "react-icons/io5";
 import { IoStarSharp } from "react-icons/io5";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Rating from "@mui/material/Rating";
 
 const SingleDesc = () => {
+  const [value, setValue] = useState(0);
   const { t } = useTranslation();
   const desc_title = t("singlePage.desc_title");
   const reviews = t("reviews.reviews");
@@ -30,11 +32,12 @@ const SingleDesc = () => {
   const feedbackRef = useRef();
   const handleMessage = async (e) => {
     e.preventDefault();
-    let message = [
-      "name:" + e.target[0].value,
-      "email:" + e.target[1].value,
-      "feedback:" + e.target[2].value,
-    ];
+    let message = `
+    name: ${e.target[0].value},
+    email: ${e.target[1].value},
+    feedback: ${e.target[2].value},
+    rating: ${value}
+    `;
     const success = t("contacts.notification");
     const error_message = t("contacts.notification_err");
     const token = "6760426179:AAFDNf2L7dlpw_AMViU2xF4tMoYa5p90L_k";
@@ -50,12 +53,14 @@ const SingleDesc = () => {
         emailRef.current.value = "";
         nameRef.current.value = "";
         feedbackRef.current.value = "";
+        setValue(0)
       }
     } catch (error) {
       toast.error(error_message);
       console.log(error);
     }
   };
+  console.log(value);
   return (
     <section className="px-[20px] sm:px-[40px] w-[100%] py-[50px]">
       <ToastContainer />
@@ -110,13 +115,13 @@ const SingleDesc = () => {
           <p>{subtitle} *</p>
           <div className="flex gap-[15px] mb-[30px]">
             <p className="text-[18px] font-[500]">{mark} *</p>
-            <div className="flex gap-[5px] text-orange-300 text-[20px]">
-              <IoStarSharp />
-              <IoStarSharp />
-              <IoStarSharp />
-              <IoStarOutline />
-              <IoStarOutline />
-            </div>
+            <Rating
+              name="simple-controlled"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
           </div>
           <form
             onSubmit={handleMessage}

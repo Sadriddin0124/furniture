@@ -158,6 +158,10 @@
       "sort4": "Według nowości",
       "sort5": "Ceny: rosnąco",
       "sort6": "Ceny: malejąco"
-    }
+    },
+      "search": {
+        "title": "Nic nie znaleziono!",
+        "link": "Wróć"
+      }
   }
   

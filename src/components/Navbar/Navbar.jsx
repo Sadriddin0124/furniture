@@ -61,7 +61,7 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <nav className="w-[100%] px-[10px] sm:px-[30px] py-[10px] flex items-center justify-between md:justify-start gap-[50px] relative z-[20]">
+    <nav className="w-[100%] px-[10px] sm:px-[30px] py-[10px] flex items-center justify-between md:justify-start gap-[50px] relative z-[40]">
       <Link onClick={handleScrollToTop} to="/" className="h-[80px] w-[80px] block">
         <img src={Logo} alt="logo" className="w-[100%] h-[100%]" />
       </Link>

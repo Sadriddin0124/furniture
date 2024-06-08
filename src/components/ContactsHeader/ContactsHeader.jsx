@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TfiEmail } from "react-icons/tfi";
 import { PiPhoneCallLight } from "react-icons/pi";
@@ -40,13 +40,13 @@ const ContactsHeader = () => {
   const messageRef = useRef();
   const handleMessage = async (e) => {
     e.preventDefault();
-    let message = [`
-      name: ${e.target[0].value},
+    let message = `
+      email: ${e.target[0].value},
       phone: ${e.target[1].value},
       message: ${e.target[2].value},
-    `]
-    const success = t("contacts.notification")
-    const error_message = t("contacts.notification_err")
+    `;
+    const success = t("contacts.notification");
+    const error_message = t("contacts.notification_err");
     const token = "6760426179:AAFDNf2L7dlpw_AMViU2xF4tMoYa5p90L_k";
     const chatId = "5575104582";
     const telegramApiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -66,30 +66,42 @@ const ContactsHeader = () => {
       console.log(error);
     }
   };
+  const [isLoaded, setIsLoaded] = useState(false);
+  const handleLoad = () => {
+    setIsLoaded(true);
+    console.log("Map fully loaded");
+  };
+  console.log(isLoaded);
   return (
     <header className="w-[100%] px-[20px] lg:px-[40px] py-[100px] items-center flex flex-col gap-[100px]">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="flex flex-col md:flex-row w-[100%] gap-[30px] justify-between">
         <div className="w-[100%] md:w-[50%] lg:w-[40%] flex flex-col gap-[50px]">
-          <h1 data-aos="fade-up" className="text-[40px] font-[700]">{title}</h1>
-          <form onSubmit={handleMessage} data-aos="fade-up" className="w-[100%] flex flex-col gap-[20px] items-end">
+          <h1 data-aos="fade-up" className="text-[40px] font-[700]">
+            {title}
+          </h1>
+          <form
+            onSubmit={handleMessage}
+            data-aos="fade-up"
+            className="w-[100%] flex flex-col gap-[20px] items-end"
+          >
             <input
-            required
-            ref={emailRef}
+              required
+              ref={emailRef}
               type="email"
               placeholder={email}
               className="h-[55px] px-[30px] py-[15px] outline-none rounded-full w-[100%] bg-zinc-100"
             />
             <input
-            required
-            ref={phoneRef}
+              required
+              ref={phoneRef}
               type="text"
               placeholder={number}
               className="h-[55px] px-[30px] py-[15px] outline-none rounded-full w-[100%] bg-zinc-100"
             />
             <textarea
-            required
-            ref={messageRef}
+              required
+              ref={messageRef}
               className="px-[30px] py-[20px] outline-none rounded-[20px] resize-none w-[100%] bg-zinc-100"
               rows="10"
               placeholder={message}
@@ -104,13 +116,25 @@ const ContactsHeader = () => {
           src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d3067.6526359032846!2d64.459964!3d39.747453!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDQ0JzUwLjgiTiA2NMKwMjcnMzUuOSJF!5e0!3m2!1sen!2sus!4v1717410495920!5m2!1sen!2sus"
           allowFullScreen=""
           loading="lazy"
+          onLoad={handleLoad}
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
+        {isLoaded ? (
+          ""
+        ) : (
+          <div className="w-[100%] md:w-[50%] h-[300px] sm:h-[350px] md:h-[85vh] flex justify-center items-center">
+            <div className="loader"></div>
+          </div>
+        )}
       </div>
       <div className="flex flex-wrap gap-[30px] justify-between w-[90%]">
         {data?.map((item, index) => {
           return (
-            <div data-aos="fade-left" key={index} className="flex items-center gap-[30px]">
+            <div
+              data-aos="fade-left"
+              key={index}
+              className="flex items-center gap-[30px]"
+            >
               <div className="text-[60px] text-orange-300">{item?.icon}</div>
               <div>
                 <span className="text-[18px] font-[600]">{item?.key}</span>

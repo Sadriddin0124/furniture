@@ -158,5 +158,9 @@
     "sort4": "Yangilik bo'yicha",
     "sort5": "Narxlar: o'sish tartibida",
     "sort6": "Narxlar: kamayish tartibida"
+  },
+  "search": {
+    "title": "Hech narsa topilmadi!",
+    "link": "Ortga qaytish"
   }
 }

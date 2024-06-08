@@ -158,5 +158,9 @@
     "sort4": "By novelty",
     "sort5": "Prices: ascending",
     "sort6": "Prices: descending"
+  },
+  "search": {
+    "title": "Nothing found!",
+    "link": "Go back"
   }
 }

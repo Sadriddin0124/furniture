@@ -21,11 +21,11 @@ const SingleNew = () => {
   const commentRef = useRef();
   const handleMessage = async (e) => {
     e.preventDefault();
-    let message = {
-      email: e.target[0].value,
-      website: e.target[1].value,
-      comment: e.target[2].value,
-    };
+    let message = `
+      email: ${e.target[0].value},
+      website: ${e.target[1].value},
+      comment: ${e.target[2].value},
+    `;
     const success = t("contacts.notification");
     const error_message = t("contacts.notification_err");
     const token = "6760426179:AAFDNf2L7dlpw_AMViU2xF4tMoYa5p90L_k";
@@ -49,7 +49,7 @@ const SingleNew = () => {
   };
   return (
     <header className="w-[100%] py-[40px] px-[20px] md:px-[40px] flex flex-col items-center">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="w-[100%] flex flex-col items-center gap-[30px]">
         <img
           src={NewsItem?.img}
